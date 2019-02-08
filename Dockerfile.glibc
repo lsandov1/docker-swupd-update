@@ -1,0 +1,9 @@
+FROM clearlinux
+MAINTAINER otc-swstacks@intel.com
+RUN swupd bundle-add package-utils
+ADD http://kojiclear.jf.intel.com/kojifiles/packages/glibc/2.29/238/x86_64/libc6-2.29-238.x86_64.rpm libc6-2.29-238.x86_64.rpm
+ADD http://kojiclear.jf.intel.com/kojifiles/packages/glibc/2.29/238/x86_64/glibc-bin-2.29-238.x86_64.rpm glibc-bin-2.29-238.x86_64.rpm
+ADD http://kojiclear.jf.intel.com/kojifiles/packages/glibc/2.29/238/x86_64/glibc-utils-2.29-238.x86_64.rpm glibc-utils-2.29-238.x86_64.rpm
+ADD http://kojiclear.jf.intel.com/kojifiles/packages/glibc/2.29/238/x86_64/glibc-staticdev-2.29-238.x86_64.rpm glibc-staticdev-2.29-238.x86_64.rpm
+RUN rpm -ivh --force --nodeps *.rpm
+CMD 'bash'
